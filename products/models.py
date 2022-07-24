@@ -10,6 +10,9 @@ class Category(models.Model):
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
 
+  def __str__(self):
+    return self.name
+
 
 class Product(models.Model):
   category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
@@ -22,12 +25,5 @@ class Product(models.Model):
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
 
-# class Branch(models.Model):
-#   name = models.CharField(max_length=25)
-#   description = models.TextField(blank=True, null=True)
-
-#   created_at = models.DateTimeField(auto_now_add=True)
-#   updated_at = models.DateTimeField(auto_now=True)
-
-# class Student(models.Model):
-#   branch = models.ForeignKey(Branch, on_delete=models.CASCADE)
+  def __str__(self):
+    return self.name
