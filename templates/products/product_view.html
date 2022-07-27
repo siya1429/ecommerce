@@ -1,3 +1,10 @@
 {% extends 'base.html' %} {% block content %}
-<h1>PRODUCT VIEW PAGE</h1>
+<h3>PRODUCT VIEW PAGE</h3>
+<div class="container">
+    <h1>Name: {{ product.name }}</h1>
+    <p>Description: {{ product.description }}</p>
+    <p>Stock: {{ product.stock }}</p>
+    <p>Price: {{ product.price }}</p>
+    <button class="btn btn-success">Buy Now</button>
+</div>
 {% endblock content %}
