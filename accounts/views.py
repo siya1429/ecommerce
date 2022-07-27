@@ -1,13 +1,13 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def login_view(request):
   if request.method == 'POST':
     username = request.POST['username']
     password = request.POST['password']
-
     user = authenticate(request, username=username, password=password)
 
     if user is not None:
@@ -16,8 +16,10 @@ def login_view(request):
 
   return render(request,'accounts/login.html')
 
+@login_required()
 def profile(request):
-  return render(request,'accounts/profile.html')
+  user = request.user
+  return render(request,'accounts/profile.html', { 'user': user })
 
 def register(request):
   if request.method == 'POST':
